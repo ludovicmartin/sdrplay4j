@@ -23,8 +23,8 @@ import java.util.List;
  * 1. Redistributions of source code must retain the above copyright notice,
  * this list of conditions and the following disclaimer.<br>2. Redistributions
  * in binary form must reproduce the above copyright notice, this list of
- * conditions and the following discla imer in the documentation and/or other ma
- * terials provided with the distribution.<br>3. Neither the name of the
+ * conditions and the following discla imer in the documentation and/or other
+ * materials provided with the distribution.<br>3. Neither the name of the
  * copyright holder nor the names of its contributors may be used to endorse or
  * promote products derived from this software without specific prior written
  * permission.<br><br>THIS SOFTWARE IS PROVID ED BY THE COPYRIGHT HOLDERS AND
