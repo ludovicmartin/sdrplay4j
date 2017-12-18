@@ -376,33 +376,33 @@ public interface MirSdrApiRspLibrary extends Library {
          * rate.
          * @param grChanged Indicates when the gain reduction has changed:<br>
          * <code>
-         * Bit0 &rarr; Change status of 1st packet: 0=&gt; no change, 1 => change occurred
-         * <br>Bit1 &rarr; Change status of 2nd packet: 0=&gt; no change, 1 =>
-         * change occurred
-         * <br>Bit2 &rarr; Change status of 3rd packet: 0=&gt; no change, 1 =>
-         * change occurred
-         * <br>Bit3 &rarr; Change status of 4th packet: 0=&gt; no change, 1 =>
-         * change occurred
+         * Bit0 &rarr; Change status of 1st packet: 0=&gt; no change, 1 =&gt; change occurred
+         * <br>Bit1 &rarr; Change status of 2nd packet: 0=&gt; no change, 1
+         * =&gt; change occurred
+         * <br>Bit2 &rarr; Change status of 3rd packet: 0=&gt; no change, 1
+         * =&gt; change occurred
+         * <br>Bit3 &rarr; Change status of 4th packet: 0=&gt; no change, 1
+         * =&gt; change occurred
          * </code>
          * @param rfChanged Indicates when the tuner frequency has changed:<br>
          * <code>
-         * Bit0 &rarr; Change status of 1st packet: 0=&gt; no change, 1 => change occurred
-         * <br>Bit1 &rarr; Change status of 2nd packet: 0=&gt; no change, 1 =>
-         * change occurred
-         * <br>Bit2 &rarr; Change status of 3rd packet: 0=&gt; no change, 1 =>
-         * change occurred
-         * <br>Bit3 &rarr; Change status of 4th packet: 0=&gt; no change, 1 =>
-         * change occurred
+         * Bit0 &rarr; Change status of 1st packet: 0=&gt; no change, 1 =&gt; change occurred
+         * <br>Bit1 &rarr; Change status of 2nd packet: 0=&gt; no change, 1
+         * =&gt; change occurred
+         * <br>Bit2 &rarr; Change status of 3rd packet: 0=&gt; no change, 1
+         * =&gt; change occurred
+         * <br>Bit3 &rarr; Change status of 4th packet: 0=&gt; no change, 1
+         * =&gt; change occurred
          * </code>
          * @param fsChanged Indicates when the sample frequency has changed:<br>
          * <code>
-         * Bit0 &rarr; Change status of 1st packet: 0=&gt; no change, 1 => change occurred
-         * <br>Bit1 &rarr; Change status of 2nd packet: 0=&gt; no change, 1 =>
-         * change occurred
-         * <br>Bit2 &rarr; Change status of 3rd packet: 0=&gt; no change, 1 =>
-         * change occurred
-         * <br>Bit3 &rarr; Change status of 4th packet: 0=&gt; no change, 1 =>
-         * change occurred
+         * Bit0 &rarr; Change status of 1st packet: 0=&gt; no change, 1 =&gt; change occurred
+         * <br>Bit1 &rarr; Change status of 2nd packet: 0=&gt; no change, 1
+         * =&gt; change occurred
+         * <br>Bit2 &rarr; Change status of 3rd packet: 0=&gt; no change, 1
+         * =&gt; change occurred
+         * <br>Bit3 &rarr; Change status of 4th packet: 0=&gt; no change, 1
+         * =&gt; change occurred
          * </code>
          * @param numSamples The number of samples in the current buffer.
          * @param reset Indicates if a re-initialisation has occurred and that
@@ -455,7 +455,7 @@ public interface MirSdrApiRspLibrary extends Library {
      * @param samplesPerPacket Pointer to an unsigned integer which returns the
      * number of samples that will be returned in each call to
      * <code>mir_sdr_ReadPacket()</code>.
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_Init(int gRdB, double fsMHz, double rfMHz, int bwType, int ifType, IntByReference samplesPerPacket);
 
@@ -465,7 +465,7 @@ public interface MirSdrApiRspLibrary extends Library {
      *
      * @deprecated these functions are no longer supported. They will still work
      * but will be removed in a future version o f the API.
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_Uninit();
 
@@ -475,7 +475,7 @@ public interface MirSdrApiRspLibrary extends Library {
      * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_ApiVersion(float *version);</code>
      *
      * @param version Pointer to a float which returns the version of the dll.
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_ApiVersion(FloatByReference version);
 
@@ -485,7 +485,7 @@ public interface MirSdrApiRspLibrary extends Library {
      *
      * @param enable Debug output control (0 = messages disabled (default), 1 =
      * messages enabled).
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_DebugEnable(int enable);
 
@@ -512,7 +512,7 @@ public interface MirSdrApiRspLibrary extends Library {
      * number of devices found (or <code>maxDevs</code> if there are more than
      * the size of array allocated).
      * @param maxDevs Maximum number of devices to be returned.
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_GetDevices(mir_sdr_DeviceT.ByReference devices, IntByReference numDevs, int maxDevs);
 
@@ -523,7 +523,7 @@ public interface MirSdrApiRspLibrary extends Library {
      *
      * @param version Pointer to variable that on return will contain the
      * version of the device in use.
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_GetHwVersion(Pointer version);
 
@@ -535,7 +535,7 @@ public interface MirSdrApiRspLibrary extends Library {
      *
      * @param index Index of device to be opened. This is the array index of the
      * structures returned in a prior call to <code>mir_sdr_GetDevices()</code>.
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_SetDeviceIdx(int index);
 
@@ -547,7 +547,7 @@ public interface MirSdrApiRspLibrary extends Library {
      *
      * @param ppm Parts per million offset (e.g. +/- 1 ppm specifies a +/- 24Hz
      * error for a 24MHz crystal).
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_SetPpm(double ppm);
 
@@ -563,7 +563,7 @@ public interface MirSdrApiRspLibrary extends Library {
      *
      * @param select Selects antenna: (mir_sdr_RSPII_ANTENNA_A = Antenna A,
      * mir_sdr_RSPII_ANTENNA_B = Antenna B).
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_RSPII_AntennaControl(int select);
 
@@ -576,7 +576,7 @@ public interface MirSdrApiRspLibrary extends Library {
      *
      * @param port AM port control: (0 = Port 0 (Antenna A or Antenna B inputs -
      * default), 1 = Port 1 (H i - Z input)).
-     * @return error code value (see mir_sdr_ErrT)
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
      */
     public int mir_sdr_AmPortSelect(int port);
 
@@ -647,9 +647,97 @@ public interface MirSdrApiRspLibrary extends Library {
      * reduction settings.
      * @param cbContext Pointer to a context passed that will be returned as a
      * parameter in the callbacks.
-     * @return error code value (see miœr_sdr_ErrT)
+     * @return error code value (see mir_sdr_ErrT)
      */
     public int mir_sdr_StreamInit(IntByReference gRdB, double fsMHz, double rfMHz, int bwType, int ifType, int LNAstate, IntByReference gRdBsystem, int setGrMode, IntByReference samplesPerPacket, mir_sdr_StreamCallback_t StreamCbFn, mir_sdr_GainChangeCallback_t GainChangeCbFn, Pointer cbContext);
+
+    /**
+     * Used to control whether AGC is enabled or not and parameters to allow the
+     * AGC to be configured. Note: Requires internal stream thread to have been
+     * created via <code>mir_sdr_StreamInit()</code> for AGC to be enabled.
+     * <br>C prototype:
+     * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_AgcControl(mir_sdr_AgcControlT enable, int setPoint_dBfs, int knee_dBfs, unsigned int decay_ms, unsigned int hang_ms, int syncUpdate, int LNAstate);</code>
+     *
+     * @param enable Specifies the AGC mode required. See enumerated types for
+     * valid values. Default mode is 100Hz (<code>mir_sdr_100HZ</code>).
+     * @param setPoint_dBfs Specifies the required set point in dBfs.
+     * @param knee_dBfs Not currently used, set to 0.
+     * @param decay_ms Not currently used, set to 0.
+     * @param hang_ms Not currently used, set to 0.
+     * @param syncUpdate Update control:<br>0 &rarr; immediate update<br>1
+     * &rarr; synchronous update (see <code>mir_sdr_SetGR()</code> for more
+     * details)
+     * @param LNAstate Indicates the LNA state to use in gain updates when AGC
+     * uses <code>mir_sdr_SetGrAltMode()</code> or
+     * <code>mir_sdr_RSP_SetGr()</code> as specified when calling
+     * <code>mir_sdr_StreamInit()</code>.
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
+     */
+    public int mir_sdr_AgcControl(int enable, int setPoint_dBfs, int knee_dBfs, int decay_ms, int hang_ms, int syncUpdate, int LNAstate);
+
+    /**
+     * Used to enable the external reference output port on a RSP2 device . If
+     * this is called before the device is opened (but after a device has been
+     * selected with <code>mir_sdr_SetDeviceIdx()</code>), then the device will
+     * be opened, the external reference enabled and the device closed again.
+     * <br>C prototype:
+     * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSPII_ExternalReferenceControl(unsigned int output_enable);</code>
+     *
+     * @param output_enable External reference output control:<br>0 &rarr;
+     * output is disabled (default)<br>1 &rarr; output is enabled
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
+     */
+    public int mir_sdr_RSPII_ExternalReferenceControl(int output_enable);
+
+    /**
+     * Enables the RF Notch Filter on a RSP2 device. If the device is already
+     * opened, it will change the set tings immediately, otherwise it will take
+     * effect on initialisation (if selected device is an RSP2).
+     * <br>C prototype:
+     * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSPII_RfNotchEnable(unsigned int enable);</code>
+     *
+     * @param enable RF Notch Filter control:<br>0 &rarr; filter disabled
+     * (default)
+     * <br>1 &rarr; filter enabled
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
+     */
+    public int mir_sdr_RSPII_RfNotchEnable(int enable);
+
+    /**
+     * Used to enable the BiasT network on a RSP2 device. If this is called
+     * before the device is opened (but after a device has been selected with
+     * <code>mir_sdr_SetDeviceIdx()</code>), then the device will be opened, the
+     * BiasT network will be enabled and the device closed again.
+     * <br>C prototype:
+     * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSPII_BiasTControl(unsigned int enable);</code>
+     *
+     * @param enable BiasT enable control:<br>0 &rarr; BiasT disabled (default)
+     * <br>1 &rarr; BiasT enabled
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
+     */
+    public int mir_sdr_RSPII_BiasTControl(int enable);
+
+    /**
+     * Stops the stream and un initialises the API.
+     * <br>C prototype:
+     * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_StreamUninit(void);</code>
+     *
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
+     */
+    public int mir_sdr_StreamUninit();
+
+    /**
+     * Used to release a device previously selected using
+     * <code>mir_sdr_SetDeviceIdx()</code>. If
+     * <code>mir_sdr_SetDeviceIdx()</code> has been used, then this function
+     * <u>must</u> be called prior to exiting the application.
+     * <br>C prototype:
+     * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_ReleaseDeviceIdx(void);</code>
+     *
+     * @return error code value (see <code>mir_sdr_ErrT</code>)
+     */
+    public int mir_sdr_ReleaseDeviceIdx();
+
 }
 /**
  * <br>C prototype:
@@ -657,73 +745,73 @@ public interface MirSdrApiRspLibrary extends Library {
  *
  * @deprecated these functions are no longer supported. They will still work but
  * will be removed in a future version o f the API.
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetRf(double drfHz, int abs, int syncUpdate);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetFs(double dfsHz, int abs, int syncUpdate, int reCal);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetGr(int gRdB, int abs, int syncUpdate);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetGrParams(int minimumGr, int lnaGrThreshold);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetDcMode(int dcCal, int speedUp);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetDcTrackTime(int trackTime);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetSyncUpdateSampleNum(unsigned int sampleNum);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetSyncUpdatePeriod(unsigned int period);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_ResetUpdateFlags(int resetGainUpdate, int resetRfUpdate, int resetFsUpdate);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetTransferMode(mir_sdr_TransferModeT mode);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_DownConvert(short *in, short *xi, short *xq, unsigned int samplesPerPacket, mir_sdr_If_kHzT ifType, unsigned int M, unsigned int preReset);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
@@ -731,48 +819,36 @@ public interface MirSdrApiRspLibrary extends Library {
  *
  * @deprecated these functions are no longer supported. They will still work but
  * will be removed in a future version o f the API.
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetLoMode(mir_sdr_LoModeT loMode);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_SetGrAltMode(int *gRidx, int LNAstate, int *gRdBsystem, int abs, int syncUpdate);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_DCoffsetIQimbalanceControl(unsigned int DCenable, unsigned int IQenable);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype: <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_DecimateControl(unsigned int enable, unsigned int decimationFactor, unsigned int wideBandSignal);
  * </code>
  *
- * @return error code value (see mir_sdr_ErrT)
- */
-/**
- * <br>C prototype:
- * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_AgcControl(mir_sdr_AgcControlT enable, int setPoint_dBfs, int knee_dBfs, unsigned int decay_ms, unsigned int hang_ms, int syncUpdate, int LNAstate);</code>
- *
- * @return error code value (see mir_sdr_ErrT)
- */
-/**
- * <br>C prototype:
- * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_StreamUninit(void);</code>
- *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_Reinit(int *gRdB, double fsMHz, double rfMHz, mir_sdr_Bw_MHzT bwType, mir_sdr_If_kHzT ifType, mir_sdr_LoModeT loMode, int LNAstate, int *gRdBsystem, mir_sdr_SetGrModeT setGrMode, int *samplesPerPacket, mir_sdr_ReasonForReinitT reasonForReinit);</code>
  */
 /**
@@ -781,66 +857,42 @@ public interface MirSdrApiRspLibrary extends Library {
  *
  * @deprecated these functions are no longer supported. They will still work but
  * will be removed in a future version o f the API.
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 
 /**
  * <br>C prototype:
- * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSPII_ExternalReferenceControl(unsigned int output_enable);</code>
- *
- * @return error code value (see mir_sdr_ErrT)
- */
-/**
- * <br>C prototype:
- * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSPII_BiasTControl(unsigned int enable);</code>
- *
- * @return error code value (see mir_sdr_ErrT)
- */
-/**
- * <br>C prototype:
- * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSPII_RfNotchEnable(unsigned int enable);</code>
- *
- * @return error code value (see mir_sdr_ErrT)
- */
-/**
- * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSP_SetGr(int gRdB, int LNAstate, int abs, int syncUpdate);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_RSP_SetGrLimits(mir_sdr_MinGainReductionT minGr);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_rsp1a_BiasT(int enable);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_rsp1a_DabNotch(int enable);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_rsp1a_BroadcastNotch(int enable);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
 /**
  * <br>C prototype:
  * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_GetCurrentGain(mir_sdr_GainValuesT *gainVals);</code>
  *
- * @return error code value (see mir_sdr_ErrT)
- */
-/**
- * <br>C prototype:
- * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_ReleaseDeviceIdx(void);</code>
- *
- * @return error code value (see mir_sdr_ErrT)
+ * @return error code value (see <code>mir_sdr_ErrT</code>)
  */
