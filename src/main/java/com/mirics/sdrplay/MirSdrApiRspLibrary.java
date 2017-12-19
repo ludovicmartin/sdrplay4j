@@ -71,7 +71,7 @@ import java.util.List;
  * 09035244. Mirics is the tr ading name of Mirics Limited a company registered
  * in England # 05046393
  *
- * @author Ludovic MARTIN - contact _A_T_ ludovicmartin.fr<br><br>
+ * @author Ludovic MARTIN - contact _A_T_ ludovicmartin.fr
  */
 public interface MirSdrApiRspLibrary extends Library {
 
