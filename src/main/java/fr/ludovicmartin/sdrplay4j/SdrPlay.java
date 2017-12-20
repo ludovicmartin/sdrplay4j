@@ -33,6 +33,7 @@ public class SdrPlay {
     private static final int MAX_DEVICE_COUNT = 16;
     private static SdrPlay instance;
     private boolean debugMode = false;
+    private final static MirSdrApiRspLibrary API = MirSdrApiRspLibrary.INSTANCE;
 
     private SdrPlay() {
     }
@@ -55,7 +56,7 @@ public class SdrPlay {
 
     public void setDebugMode(boolean debugMode) {
         this.debugMode = debugMode;
-        MirSdrApiRspLibrary.INSTANCE.mir_sdr_DebugEnable(debugMode ? 1 : 0);
+        API.mir_sdr_DebugEnable(debugMode ? 1 : 0);
     }
 
     /**
@@ -79,7 +80,7 @@ public class SdrPlay {
         IntByReference numDevs = new IntByReference();
         MirSdrApiRspLibrary.mir_sdr_DeviceT.ByReference devices = new MirSdrApiRspLibrary.mir_sdr_DeviceT.ByReference();
         MirSdrApiRspLibrary.mir_sdr_DeviceT[] deviceData = (MirSdrApiRspLibrary.mir_sdr_DeviceT[]) devices.toArray(MAX_DEVICE_COUNT);
-        checkResultCode(MirSdrApiRspLibrary.INSTANCE.mir_sdr_GetDevices(devices, numDevs, MAX_DEVICE_COUNT));
+        checkResultCode(API.mir_sdr_GetDevices(devices, numDevs, MAX_DEVICE_COUNT));
 
         List<Device> result = new ArrayList(numDevs.getValue());
         for (int i = 0; i < numDevs.getValue(); i++) {
