@@ -604,7 +604,7 @@ public interface MirSdrApiRspLibrary extends Library {
      * <code>_MIR_SDR_QUALIFIER mir_sdr_ErrT mir_sdr_StreamInit(int *gRdB, double fsMHz, double rfMHz, mir_sdr_Bw_MHzT bwType, mir_sdr_If_kHzT ifType, int LNAstate, int *gRdBsystem, mir_sdr_SetGrModeT setGrMode, int *samplesPerPacket, mir_sdr_StreamCallback_t StreamCbFn, mir_sdr_GainChangeCallback_t GainChangeCbFn, void *cbContext);</code>
      *
      * @param gRdB Input value is the requested initial gain reduction in dB
-     * (see gain reduction tables referenced in section 5 for range s and
+     * (see gain reduction tables referenced in section 5 for ranges and
      * mappings), returns IF gain reduction value.
      * @param fsMHz Specifies the sample frequency in MHz, values between 2MHz
      * and 10MHz are permitted. Decimation can be used to obtain lower sample
