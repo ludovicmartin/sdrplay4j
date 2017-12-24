@@ -102,6 +102,14 @@ public interface Device {
 
     public String getSerialNumber();
 
+    public void addGainReductionListener(GainListener listener);
+
+    public void addStreamListener(StreamListener listener);
+
+    public void removeGainReductionListener(GainListener listener);
+
+    public void removeStreamListener(StreamListener listener);
+
     public void setPpmOffset(double value);
 
     public void setAntennaPort(AntennaPort port);

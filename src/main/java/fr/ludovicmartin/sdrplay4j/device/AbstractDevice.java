@@ -6,7 +6,9 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import fr.ludovicmartin.sdrplay4j.SdrPlay;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Abstract device.
@@ -20,10 +22,11 @@ public abstract class AbstractDevice implements Device {
     protected String serialNumber;
 
     protected boolean open = false;
-
     protected final static MirSdrApiRspLibrary API = MirSdrApiRspLibrary.INSTANCE;
 
     private static Device currentDevice = null;
+    private Set<StreamListener> streamListeners = new HashSet<>();
+    private Set<GainListener> gainListeners = new HashSet<>();
 
     public AbstractDevice(int id, String name, String serialNumber) {
         this.id = id;
@@ -71,6 +74,26 @@ public abstract class AbstractDevice implements Device {
     }
 
     @Override
+    public void addGainReductionListener(GainListener listener) {
+        gainListeners.add(listener);
+    }
+
+    @Override
+    public void addStreamListener(StreamListener listener) {
+        streamListeners.add(listener);
+    }
+
+    @Override
+    public void removeGainReductionListener(GainListener listener) {
+        gainListeners.remove(listener);
+    }
+
+    @Override
+    public void removeStreamListener(StreamListener listener) {
+        streamListeners.remove(listener);
+    }
+
+    @Override
     public void setPpmOffset(double value) {
         selectDevice(this);
         SdrPlay.checkResultCode(API.mir_sdr_SetPpm(value));
@@ -102,9 +125,23 @@ public abstract class AbstractDevice implements Device {
                 0,
                 new IntByReference(0),
                 mir_sdr_SetGrModeT.mir_sdr_USE_SET_GR,
-                samplesPerPacket, (PointerByReference xi, PointerByReference xq, int firstSampleNum, int grChanged, int rfChanged, int fsChanged, int numSamples, int reset, Pointer cbContext) -> {
+                samplesPerPacket, (PointerByReference xi, PointerByReference xq, int _firstSampleNum, int grChanged, int rfChanged, int fsChanged, int _numSamples, int _reset, Pointer cbContext) -> {
+                    if (!streamListeners.isEmpty()) {
+                        long firstSampleNum = (long) _firstSampleNum & 0xFFFFFFFF;
+                        long numSamples = (long) _numSamples & 0xFFFFFFFF;
+                        long reset = (long) _reset & 0xFFFFFFFF;
+                        short[] iBuffer = xi.getPointer().getShortArray(id, (int) numSamples);
+                        short[] qBuffer = xq.getPointer().getShortArray(id, (int) numSamples);
+                        streamListeners.forEach(listener -> listener.onStreamData(firstSampleNum, iBuffer, qBuffer, reset > 0, grChanged > 0, rfChanged > 0, fsChanged > 0));
+                    }
+
                 },
-                (int gRdB, int lnaGRdB, Pointer cbContext) -> {
+                (int _gRdB, int _lnaGRdB, Pointer cbContext) -> {
+                    if (!gainListeners.isEmpty()) {
+                        long gRdB = (long) _gRdB & 0xFFFFFFFF;
+                        long lnaGRdB = (long) _lnaGRdB & 0xFFFFFFFF;
+                        gainListeners.forEach(listener -> listener.onGainChanged(gRdB, lnaGRdB));
+                    }
                 },
                 null
         ));
