@@ -5,6 +5,7 @@ package fr.ludovicmartin.sdrplay4j.device;
  *
  * @author Ludovic MARTIN - contact _A_T_ ludovicmartin.fr
  */
+@FunctionalInterface
 public interface GainListener {
 
     /**

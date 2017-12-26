@@ -1,6 +1,7 @@
 package fr.ludovicmartin.sdrplay4j;
 
 import com.mirics.sdrplay.MirSdrApiRspLibrary;
+import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import fr.ludovicmartin.sdrplay4j.device.Device;
 import fr.ludovicmartin.sdrplay4j.device.SdrPlay2Device;
@@ -57,6 +58,12 @@ public class SdrPlay {
     public void setDebugMode(boolean debugMode) {
         this.debugMode = debugMode;
         API.mir_sdr_DebugEnable(debugMode ? 1 : 0);
+    }
+
+    public float getApiVersion() {
+        FloatByReference version = new FloatByReference();
+        API.mir_sdr_ApiVersion(version);
+        return version.getValue();
     }
 
     /**
