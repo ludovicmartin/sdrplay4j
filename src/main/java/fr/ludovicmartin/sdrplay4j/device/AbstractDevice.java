@@ -129,8 +129,8 @@ public abstract class AbstractDevice implements Device {
                         long firstSampleNum = (long) _firstSampleNum & 0xFFFFFFFF;
                         long numSamples = (long) _numSamples & 0xFFFFFFFF;
                         long reset = (long) _reset & 0xFFFFFFFF;
-                        short[] iBuffer = xi.getShortArray(id, (int) numSamples);
-                        short[] qBuffer = xq.getShortArray(id, (int) numSamples);
+                        short[] iBuffer = xi.getShortArray(0, (int) numSamples);
+                        short[] qBuffer = xq.getShortArray(0, (int) numSamples);
                         streamListeners.forEach(listener -> listener.onStreamData(firstSampleNum, iBuffer, qBuffer, reset > 0, grChanged > 0, rfChanged > 0, fsChanged > 0));
                     }
                 },
