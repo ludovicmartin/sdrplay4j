@@ -2,9 +2,7 @@ package fr.ludovicmartin.sdrplay4j.device;
 
 import com.mirics.sdrplay.MirSdrApiRspLibrary;
 import com.mirics.sdrplay.MirSdrApiRspLibrary.mir_sdr_SetGrModeT;
-import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
 import fr.ludovicmartin.sdrplay4j.SdrPlay;
 import java.util.HashSet;
 import java.util.Objects;
@@ -25,8 +23,8 @@ public abstract class AbstractDevice implements Device {
     protected final static MirSdrApiRspLibrary API = MirSdrApiRspLibrary.INSTANCE;
 
     private static Device currentDevice = null;
-    private Set<StreamListener> streamListeners = new HashSet<>();
-    private Set<GainListener> gainListeners = new HashSet<>();
+    private final Set<StreamListener> streamListeners = new HashSet<>();
+    private final Set<GainListener> gainListeners = new HashSet<>();
 
     public AbstractDevice(int id, String name, String serialNumber) {
         this.id = id;
@@ -125,18 +123,17 @@ public abstract class AbstractDevice implements Device {
                 0,
                 new IntByReference(0),
                 mir_sdr_SetGrModeT.mir_sdr_USE_SET_GR,
-                samplesPerPacket, (PointerByReference xi, PointerByReference xq, int _firstSampleNum, int grChanged, int rfChanged, int fsChanged, int _numSamples, int _reset, Pointer cbContext) -> {
+                samplesPerPacket, (xi, xq, _firstSampleNum, grChanged, rfChanged, fsChanged, _numSamples, _reset, cbContext) -> {
                     if (!streamListeners.isEmpty()) {
                         long firstSampleNum = (long) _firstSampleNum & 0xFFFFFFFF;
                         long numSamples = (long) _numSamples & 0xFFFFFFFF;
                         long reset = (long) _reset & 0xFFFFFFFF;
-                        short[] iBuffer = xi.getPointer().getShortArray(id, (int) numSamples);
-                        short[] qBuffer = xq.getPointer().getShortArray(id, (int) numSamples);
+                        short[] iBuffer = xi.getShortArray(id, (int) numSamples);
+                        short[] qBuffer = xq.getShortArray(id, (int) numSamples);
                         streamListeners.forEach(listener -> listener.onStreamData(firstSampleNum, iBuffer, qBuffer, reset > 0, grChanged > 0, rfChanged > 0, fsChanged > 0));
                     }
-
                 },
-                (int _gRdB, int _lnaGRdB, Pointer cbContext) -> {
+                (_gRdB, _lnaGRdB, cbContext) -> {
                     if (!gainListeners.isEmpty()) {
                         long gRdB = (long) _gRdB & 0xFFFFFFFF;
                         long lnaGRdB = (long) _lnaGRdB & 0xFFFFFFFF;

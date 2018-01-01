@@ -8,7 +8,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
 import java.util.Arrays;
 import java.util.List;
 
@@ -411,7 +410,7 @@ public interface MirSdrApiRspLibrary extends Library {
          * @param cbContext Pointer to context passed into
          * <code>mir_sdr_StreamInit()</code>.
          */
-        void invoke(PointerByReference xi, PointerByReference xq, int firstSampleNum, int grChanged, int rfChanged, int fsChanged, int numSamples, int reset, Pointer cbContext);
+        void invoke(Pointer xi, Pointer xq, int firstSampleNum, int grChanged, int rfChanged, int fsChanged, int numSamples, int reset, Pointer cbContext);
     }
 
     /**
