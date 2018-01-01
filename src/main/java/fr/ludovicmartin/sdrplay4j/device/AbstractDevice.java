@@ -2,6 +2,7 @@ package fr.ludovicmartin.sdrplay4j.device;
 
 import com.mirics.sdrplay.MirSdrApiRspLibrary;
 import com.mirics.sdrplay.MirSdrApiRspLibrary.mir_sdr_SetGrModeT;
+import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import fr.ludovicmartin.sdrplay4j.SdrPlay;
 import java.util.HashSet;
@@ -140,7 +141,7 @@ public abstract class AbstractDevice implements Device {
                         gainListeners.forEach(listener -> listener.onGainChanged(gRdB, lnaGRdB));
                     }
                 },
-                null
+                Pointer.NULL
         ));
         open = true;
     }
