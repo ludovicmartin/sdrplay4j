@@ -1,7 +1,7 @@
 # sdrplay4j
 SdrPlay API wrapper for Java using JNA.
 
-## Why ?
+## Why?
 For fun!
 
 ## Does it work?
