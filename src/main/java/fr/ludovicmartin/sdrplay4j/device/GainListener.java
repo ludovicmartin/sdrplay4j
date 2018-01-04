@@ -9,6 +9,7 @@ package fr.ludovicmartin.sdrplay4j.device;
 public interface GainListener {
 
     /**
+     * Invoked on gain change.
      *
      * @param ifGainReduction new IF gain reduction value applied by the gain
      * update (dB).

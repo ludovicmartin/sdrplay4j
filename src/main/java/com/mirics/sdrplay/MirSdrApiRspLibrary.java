@@ -14,6 +14,9 @@ import java.util.List;
 /**
  * SDRplay library. <br>All functions are blocking and not thread-safe.<br><br>
  *
+ * The original documentation is available here:
+ * https://www.sdrplay.com/docs/SDRplay_SDR_API_Specification.pdf<br><br>
+ *
  * Copyright (c) 2013 Mirics Ltd, All Rights Reserved Legal Information<br><br>
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are

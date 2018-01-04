@@ -12,6 +12,9 @@ import java.util.Objects;
  */
 public interface Device {
 
+    /**
+     * Antenna port type.
+     */
     public static class AntennaPort {
 
         public static final AntennaPort A = new AntennaPort(mir_sdr_RSPII_AntennaSelectT.mir_sdr_RSPII_ANTENNA_A);
@@ -36,6 +39,9 @@ public interface Device {
 
     }
 
+    /**
+     * Bandwidth type.
+     */
     public static class Bandwidth {
 
         public static final Bandwidth BW_UNDEFINED = new Bandwidth(mir_sdr_Bw_MHzT.mir_sdr_BW_Undefined);
@@ -70,6 +76,9 @@ public interface Device {
 
     }
 
+    /**
+     * IF type.
+     */
     public static class IfType {
 
         public static final IfType IF_UNDEFINED = new IfType(mir_sdr_If_kHzT.mir_sdr_IF_Undefined);
@@ -96,26 +105,86 @@ public interface Device {
 
     }
 
+    /**
+     * Get the device ID.
+     *
+     * @return id
+     */
     public int getId();
 
+    /**
+     * Get the device name.
+     *
+     * @return device name
+     */
     public String getName();
 
+    /**
+     * Get the device serial number.
+     *
+     * @return serial number
+     */
     public String getSerialNumber();
 
+    /**
+     * Add a gain reduction listener.
+     *
+     * @param listener listener
+     */
     public void addGainReductionListener(GainListener listener);
 
+    /**
+     * Add a stream listener.
+     *
+     * @param listener listener
+     */
     public void addStreamListener(StreamListener listener);
 
+    /**
+     * Remove a gain reduction listener.
+     *
+     * @param listener listener
+     */
     public void removeGainReductionListener(GainListener listener);
 
+    /**
+     * Remove a stream listener.
+     *
+     * @param listener listener
+     */
     public void removeStreamListener(StreamListener listener);
 
+    /**
+     * Set the PPM offset.
+     *
+     * @param value parts per million offset (e.g. +/-1 ppm specifies a +/-24Hz
+     * error for a 24MHz crystal)
+     */
     public void setPpmOffset(double value);
 
+    /**
+     * Set the antenna port.
+     *
+     * @param port port
+     */
     public void setAntennaPort(AntennaPort port);
 
+    /**
+     * Check if device is open.
+     *
+     * @return true if open, false otherwise.
+     */
     public boolean isOpen();
 
+    /**
+     * Open the device.
+     *
+     * @param gainReduction initial gain reduction in dB
+     * @param sampleRate sample frequency in MHz (2-10MHz)
+     * @param tunerFrequency tuner frequency in MHz
+     * @param bandWidth bandwidth type
+     * @param ifType IF type
+     */
     public void open(
             int gainReduction,
             int sampleRate,
@@ -124,6 +193,9 @@ public interface Device {
             IfType ifType
     );
 
+    /**
+     * Close the device.
+     */
     public void close();
 
 }
